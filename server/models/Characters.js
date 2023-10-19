@@ -12,6 +12,12 @@ const characterSchema = new Schema({
     nickname: {
         type: String,
     },
+    race: {
+        type: String,
+    },
+    gender: {
+        type: String,
+    },
     age: {
         type: Number,
     },
