@@ -2,7 +2,7 @@ const db = require('./connection');
 const { Character, Item, Location } = require('../models');
 
 db.once('open', async () => {
-    //delete all pre-existing villagers
+    //delete all pre-existing characters
     await Character.deleteMany();
 
     const characters = await Character.insertMany([
@@ -62,8 +62,8 @@ db.once('open', async () => {
             alignment: "Chaotic Good",
         },
         {
-            name: "Bex",
-            nickname: "N/A",
+            name: "Bexival Underbuckles",
+            nickname: "Bex",
             race: "human",
             gender: "male",
             age: 53,
@@ -76,18 +76,38 @@ db.once('open', async () => {
 
     console.log('Characters seeded');
 
-    //delete all pre-existing comments
+    //delete all pre-existing Items
     await Item.deleteMany();
 
-    const comments = await Comment.create([
+    const Items = await Item.inse([
         {
-            body: "I got you!",
-            authorId: villagers[1]._id,
-            // requestId: request[0]._id,
+            name: "Scroll of Sword Defense",
+            description: "After studying the scroll, the user will be able to use their sword to defend themselves or an ally once per day.",
+            characterId: characters[1]._id,
+        },
+        {
+            name: "The Passion and the Promise",
+            description: "Disguised as a saucy romance novel, the inner drawings of this book explain to the weilder how to warp themselves or allies to a new location every few days.",
+            characterId: characters[0]._id,
+        },
+        {
+            name: "Fleeter Feet Moccasins",
+            description: "The user can dash or disengage three times per day as a bonus action. So fast!",
+            characterId: characters[2]._id,
+        },
+        {
+            name: "Skull Ring",
+            description: "This necromantic skull ring can be used to transfer power from the character attacked to its weilder after a successful strike.",
+            characterId: characters[3]._id,
+        },
+        {
+            name: "Sacrificial Lamb",
+            description: "A small wooden carving of a winged lamb that can come to life. It then becomes a loudly buzzing miniature lamb that bleats constantly. It's annoying and not at all quiet, but it can soak up any damage intended for the wearer of the necklace.",
+            characterId: characters[4]._id,
         }
     ])
 
-    console.log('Comments seeded');
+    console.log('Items seeded');
     
         //delete all pre-existing requests
         await Request.deleteMany();
