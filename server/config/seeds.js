@@ -109,61 +109,29 @@ db.once('open', async () => {
 
     console.log('Items seeded');
     
-        //delete all pre-existing requests
-        await Request.deleteMany();
+        //delete all pre-existing locations
+        await Location.deleteMany();
     
-        const request = await Request.create([
+        const location = await location.insertMany([
             {
-                title: "Carpool Request - Tuesday",
-                body: "I need someone to drop Kevin and Sara off at school on Tuesday",
-                crayons: 2,
-                authorId: villagers[0]._id,
-                isComplete: false,
-                isClaimed: true,
-                comments: comments[0]._id,
-                response: {
-                    claimId: villagers[1]._id,
-                }
+                name: "Og's Hole",
+                description: "A small settlement in Endorayn. There's not much in this small town except for the Inn called 'The Silly Elf'. The adventurers came across some dwarf teens playing a prank and, less humorously, some Grimlocks.",
+                type: "Settlement",
             },
             {
-                title: "Carpool Request - Wednesday",
-                body: "I need someone to drop Kevin and Sara off at school on Tuesday",
-                crayons: 4,
-                authorId: villagers[1]._id,
-                isComplete: false,
-                isClaimed: true,
-                comments: comments[0]._id,
-                response: {
-                    claimId: villagers[0]._id,
-                }
-            }
+                name: "Gruhnhal",
+                description: "Though it's the largest village along the Merchant's Way between Paetha and Caerwyn, it's still a fairly small village. And according to the townsfolk, it's getting smaller every season...",
+                type: "Village",
+            },
+            {
+                name: "Muirlaenyra",
+                description: "A well-hidden elven settlement in the heart of the forest of Endorayn. Outsiders don't know of its existence- for safety reasons. The adventurers were surprised to have been invited in to speak with the council, but still more questions remain.",
+                type: "Village",
+            },
         ])
     
-        console.log('Request seeded');
+        console.log('Locations seeded');
 
-    //delete all pre-existing villages
-    await Village.deleteMany();
-
-    const village = await Village.create([
-        {
-            name: "Big Village",
-            zipcode: "44608",
-            admin:
-                villagers[0]._id,
-            // villagers:
-            //     [
-            //         villagers[0]._id,
-            //         villagers[1]._id,
-            //     ],
-            requests:
-                [
-                    request[0]._id
-                ]
-        }
-    ]);
-
-    console.log('Village seeded');
-
-    console.log('Seeds Completed!!');
+    console.log('Seeding Complete!!');
     process.exit();
 });
