@@ -1,11 +1,11 @@
 const db = require('./connection');
-const { Character, Item, Location } = require('../models');
+const { Characters, Items, Locations } = require('../models');
 
 db.once('open', async () => {
-    //delete all pre-existing villagers
-    await Character.deleteMany();
+    //delete all pre-existing characters
+    await Characters.deleteMany();
 
-    const characters = await Character.insertMany([
+    const characters = await Characters.insertMany([
         {
             name: "Ike Golandish",
             nickname: "Ike of the Forsaken",
@@ -29,41 +29,41 @@ db.once('open', async () => {
             alignment: "Lawful Neutral",
         },
         {
-            name: "Isla Silentstep",
+            name: "Isla Alaerys",
             nickname: "Isla",
             race: "Wood Elf",
             gender: "female",
             age: 50,
             height: "5 feet, 1 inch",
             weight: "115 lbs.",
-            description: "Isla was captured from her home in the Old Forest and sold into slavery. She's trying to find a way back home, and learning a lot about the larger world along the way. She likes plants and animals. Plants and animals like her. They've got a good thing going.",
+            description: "Isla was captured from her home in the Old Forest and sold into slavery. She's trying to find a way back home, and learning a lot about the larger world along the way. She likes plants and animals, and plants and animals like her. They've got a good thing going.",
             alignment: "Neutral Good",
         },
         {
-            name: "O'Rik",
-            nickname: "",
-            race: "",
+            name: "O'Rik of the Chak'te",
+            nickname: "O'Rik",
+            race: "Half-Orc",
             gender: "male",
-            age: 131,
-            height: "5 feet, 7 inches",
-            weight: "185 lbs.",
-            description: "As his name implies, Ike of the Forsaken was cast out of the brotherhood of secret assassin monks he once served. He now seeks to regain his status and return to service of the brotherhood of Heiadorry through acts of atonement.",
+            age: 20,
+            height: "6 feet, 4 inches",
+            weight: "260 lbs.",
+            description: "O'Rik has two objectives right now. The first is freeing himself from slavery, but that's mostly out of necessity. His second and primary goal: revenge. Jealous chief Ju'dic of the Chak'te had his mother burned at the pyre, and O'Rik has vowed to pay back the coward in full.",
+            alignment: "Chaotic Neutral",
+        },
+        {
+            name: "Yennika Haivell",
+            nickname: "Yen",
+            race: "half-elf",
+            gender: "female",
+            age: 27,
+            height: "5 feet, 6 inches",
+            weight: "180 lbs.",
+            description: "Yen has spent her whole life being cast out, ignored, or avoided. Could it possibly be that this lifelong mistreatment at the hands of others potentially contributed to her sarcastic and sharp demeanor? Maybe?",
             alignment: "Chaotic Good",
         },
         {
-            name: "Yen",
-            nickname: "",
-            race: "",
-            gender: "male",
-            age: 131,
-            height: "5 feet, 7 inches",
-            weight: "185 lbs.",
-            description: "As his name implies, Ike of the Forsaken was cast out of the brotherhood of secret assassin monks he once served. He now seeks to regain his status and return to service of the brotherhood of Heiadorry through acts of atonement.",
-            alignment: "Chaotic Good",
-        },
-        {
-            name: "Bex",
-            nickname: "N/A",
+            name: "Bexival Underbuckles",
+            nickname: "Bex",
             race: "human",
             gender: "male",
             age: 53,
@@ -74,76 +74,64 @@ db.once('open', async () => {
         },
     ]);
 
-    console.log('Villagers seeded');
+    console.log('Characters seeded');
 
-    //delete all pre-existing comments
-    await Comment.deleteMany();
+    //delete all pre-existing Items
+    await Items.deleteMany();
 
-    const comments = await Comment.create([
+    const items = await Items.insertMany([
         {
-            body: "I got you!",
-            authorId: villagers[1]._id,
-            // requestId: request[0]._id,
+            name: "Scroll of Sword Defense",
+            description: "After studying the scroll, the user will be able to use their sword to defend themselves or an ally once per day.",
+            characterId: characters[1]._id,
+        },
+        {
+            name: "The Passion and the Promise",
+            description: "Disguised as a saucy romance novel, the inner drawings of this book explain to the weilder how to warp themselves or allies to a new location every few days.",
+            characterId: characters[0]._id,
+        },
+        {
+            name: "Fleeter Feet Moccasins",
+            description: "The user can dash or disengage three times per day as a bonus action. So fast!",
+            characterId: characters[2]._id,
+        },
+        {
+            name: "Skull Ring",
+            description: "This necromantic skull ring can be used to transfer power from the character attacked to its weilder after a successful strike.",
+            characterId: characters[3]._id,
+        },
+        {
+            name: "Sacrificial Lamb",
+            description: "A small wooden carving of a winged lamb that can come to life. It then becomes a loudly buzzing miniature lamb that bleats constantly. It's annoying and not at all quiet, but it can soak up any damage intended for the wearer of the necklace.",
+            characterId: characters[4]._id,
         }
     ])
 
-    console.log('Comments seeded');
+    console.log('Items seeded');
     
-        //delete all pre-existing requests
-        await Request.deleteMany();
+        //delete all pre-existing locations
+        await Locations.deleteMany();
     
-        const request = await Request.create([
+        const locations = await Locations.insertMany([
             {
-                title: "Carpool Request - Tuesday",
-                body: "I need someone to drop Kevin and Sara off at school on Tuesday",
-                crayons: 2,
-                authorId: villagers[0]._id,
-                isComplete: false,
-                isClaimed: true,
-                comments: comments[0]._id,
-                response: {
-                    claimId: villagers[1]._id,
-                }
+                name: "Og's Hole",
+                description: "A small settlement in Endorayn. There's not much in this small town except for the Inn called 'The Silly Elf'. The adventurers came across some dwarf teens playing a prank and, less humorously, some Grimlocks.",
+                type: "Settlement",
             },
             {
-                title: "Carpool Request - Wednesday",
-                body: "I need someone to drop Kevin and Sara off at school on Tuesday",
-                crayons: 4,
-                authorId: villagers[1]._id,
-                isComplete: false,
-                isClaimed: true,
-                comments: comments[0]._id,
-                response: {
-                    claimId: villagers[0]._id,
-                }
-            }
+                name: "Gruhnhal",
+                description: "Though it's the largest village along the Merchant's Way between Paetha and Caerwyn, it's still a fairly small village. And according to the townsfolk, it's getting smaller every season...",
+                type: "Village",
+            },
+            {
+                name: "Muirlaenyra",
+                description: "A well-hidden elven settlement in the heart of the forest of Endorayn. Outsiders don't know of its existence- for safety reasons. The adventurers were surprised to have been invited in to speak with the council, but still more questions remain.",
+                type: "Village",
+            },
         ])
     
-        console.log('Request seeded');
+        console.log('Locations seeded');
 
-    //delete all pre-existing villages
-    await Village.deleteMany();
-
-    const village = await Village.create([
-        {
-            name: "Big Village",
-            zipcode: "44608",
-            admin:
-                villagers[0]._id,
-            // villagers:
-            //     [
-            //         villagers[0]._id,
-            //         villagers[1]._id,
-            //     ],
-            requests:
-                [
-                    request[0]._id
-                ]
-        }
-    ]);
-
-    console.log('Village seeded');
-
-    console.log('Seeds Completed!!');
+    console.log('Seeding Complete!!');
     process.exit();
 });

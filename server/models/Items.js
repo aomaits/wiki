@@ -12,7 +12,7 @@ const itemSchema = new Schema({
     description: {
         type: String
     },
-    character: {
+    characterId: {
         type: Schema.Types.ObjectId,
         ref: 'Character',
         required: true
