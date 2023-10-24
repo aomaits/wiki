@@ -1,11 +1,11 @@
 const db = require('./connection');
-const { Character, Item, Location } = require('../models');
+const { Characters, Items, Locations } = require('../models');
 
 db.once('open', async () => {
     //delete all pre-existing characters
-    await Character.deleteMany();
+    await Characters.deleteMany();
 
-    const characters = await Character.insertMany([
+    const characters = await Characters.insertMany([
         {
             name: "Ike Golandish",
             nickname: "Ike of the Forsaken",
@@ -77,9 +77,9 @@ db.once('open', async () => {
     console.log('Characters seeded');
 
     //delete all pre-existing Items
-    await Item.deleteMany();
+    await Items.deleteMany();
 
-    const Items = await Item.inse([
+    const items = await Items.insertMany([
         {
             name: "Scroll of Sword Defense",
             description: "After studying the scroll, the user will be able to use their sword to defend themselves or an ally once per day.",
@@ -110,9 +110,9 @@ db.once('open', async () => {
     console.log('Items seeded');
     
         //delete all pre-existing locations
-        await Location.deleteMany();
+        await Locations.deleteMany();
     
-        const location = await location.insertMany([
+        const locations = await Locations.insertMany([
             {
                 name: "Og's Hole",
                 description: "A small settlement in Endorayn. There's not much in this small town except for the Inn called 'The Silly Elf'. The adventurers came across some dwarf teens playing a prank and, less humorously, some Grimlocks.",
