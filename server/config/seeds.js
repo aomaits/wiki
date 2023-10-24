@@ -29,36 +29,36 @@ db.once('open', async () => {
             alignment: "Lawful Neutral",
         },
         {
-            name: "Isla Silentstep",
+            name: "Isla Alaerys",
             nickname: "Isla",
             race: "Wood Elf",
             gender: "female",
             age: 50,
             height: "5 feet, 1 inch",
             weight: "115 lbs.",
-            description: "Isla was captured from her home in the Old Forest and sold into slavery. She's trying to find a way back home, and learning a lot about the larger world along the way. She likes plants and animals. Plants and animals like her. They've got a good thing going.",
+            description: "Isla was captured from her home in the Old Forest and sold into slavery. She's trying to find a way back home, and learning a lot about the larger world along the way. She likes plants and animals, and plants and animals like her. They've got a good thing going.",
             alignment: "Neutral Good",
         },
         {
-            name: "O'Rik",
-            nickname: "",
-            race: "",
+            name: "O'Rik of the Chak'te",
+            nickname: "O'Rik",
+            race: "Half-Orc",
             gender: "male",
-            age: 131,
-            height: "5 feet, 7 inches",
-            weight: "185 lbs.",
-            description: "As his name implies, Ike of the Forsaken was cast out of the brotherhood of secret assassin monks he once served. He now seeks to regain his status and return to service of the brotherhood of Heiadorry through acts of atonement.",
-            alignment: "Chaotic Good",
+            age: 20,
+            height: "6 feet, 4 inches",
+            weight: "260 lbs.",
+            description: "O'Rik has two objectives right now. The first is freeing himself from slavery, but that's mostly out of necessity. His second and primary goal: revenge. Jealous chief Ju'dic of the Chak'te had his mother burned at the pyre, and O'Rik has vowed to pay back the coward in full.",
+            alignment: "Chaotic Neutral",
         },
         {
-            name: "Yen",
-            nickname: "",
-            race: "",
-            gender: "male",
-            age: 131,
-            height: "5 feet, 7 inches",
-            weight: "185 lbs.",
-            description: "As his name implies, Ike of the Forsaken was cast out of the brotherhood of secret assassin monks he once served. He now seeks to regain his status and return to service of the brotherhood of Heiadorry through acts of atonement.",
+            name: "Yennika Haivell",
+            nickname: "Yen",
+            race: "half-elf",
+            gender: "female",
+            age: 27,
+            height: "5 feet, 6 inches",
+            weight: "180 lbs.",
+            description: "Yen has spent her whole life being cast out, ignored, or avoided. Could it possibly be that this lifelong mistreatment at the hands of others potentially contributed to her sarcastic and sharp demeanor? Maybe?",
             alignment: "Chaotic Good",
         },
         {
@@ -74,10 +74,10 @@ db.once('open', async () => {
         },
     ]);
 
-    console.log('Villagers seeded');
+    console.log('Characters seeded');
 
     //delete all pre-existing comments
-    await Comment.deleteMany();
+    await Item.deleteMany();
 
     const comments = await Comment.create([
         {
