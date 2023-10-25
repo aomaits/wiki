@@ -13,9 +13,6 @@ const resolvers = {
             return await Locations.find();
         },
     },
-    
-    Mutation: {
-    },
 }
 
 module.exports = resolvers;

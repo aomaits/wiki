@@ -15,7 +15,6 @@ const itemSchema = new Schema({
     characterId: {
         type: Schema.Types.ObjectId,
         ref: 'Character',
-        required: true
     }
 });
 

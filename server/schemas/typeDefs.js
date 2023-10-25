@@ -13,14 +13,14 @@ const typeDefs = gql`
         weight: String
         description: String
         alignment: String
-        items: [Items]
+        items: Item
     }
 
     type Item {
         _id: ID
         name: String
         description: String
-        characterId: [Characters]
+        characterId: Character
     }
 
     type Location {
@@ -28,6 +28,12 @@ const typeDefs = gql`
         name: String
         description: String
         type: String
+    }
+
+    type Query {
+        characters: [Character]
+        items: [Item]
+        locations: [Location]
     }
 `;
 
