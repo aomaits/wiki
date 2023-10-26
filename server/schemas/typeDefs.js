@@ -13,7 +13,7 @@ const typeDefs = gql`
         weight: String
         description: String
         alignment: String
-        items: Item
+        itemsId: Item
     }
 
     type Item {

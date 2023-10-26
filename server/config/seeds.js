@@ -24,7 +24,7 @@ db.once('open', async () => {
         },
         {
             name: "Sacrificial Lamb",
-            description: "A small wooden carving of a winged lamb that can come to life. It then becomes a loudly buzzing miniature lamb that bleats constantly. It's annoying and not at all quiet, but it can soak up any damage intended for the wearer of the necklace.",
+            description: "A small wooden carving of a winged lamb that can come to life. It then becomes a loudly buzzing miniature lamb that bleats constantly. Sure, it's noisy, but it can soak up any damage intended for the wearer of the necklace!",
         }
     ])
 
