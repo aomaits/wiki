@@ -36,7 +36,7 @@ function App() {
             Filter component will be placed here
             <div className="col-lg-8 col-12">
               <div className="row">
-                Card component will be placed here
+                <Card />
               </div>
             </div>
           </div>

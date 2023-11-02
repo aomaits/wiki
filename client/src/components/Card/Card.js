@@ -1,7 +1,7 @@
 // Card.js
 import React from "react";
 import { useQuery } from '@apollo/client';
-import { QUERY_ALL_CHARACTERS } from '../utils/queries';
+import { QUERY_ALL_CHARACTERS } from '../../utils/queries';
 
 function Card() {
   const { loading, error, data } = useQuery(QUERY_ALL_CHARACTERS);
@@ -19,8 +19,8 @@ function Card() {
   return (
     <div>
         {data}
-    </div>>
-  )
-}
+    </div>
+  );
+};
 
 export default Card;
